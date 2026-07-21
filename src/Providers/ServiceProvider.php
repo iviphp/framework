@@ -20,7 +20,7 @@ declare(strict_types=1);
 
 namespace Ivi\Framework\Providers;
 
-use Ivi\Config\Config;
+use Ivi\Config\ConfigRepository;
 use Ivi\Container\Container;
 use Ivi\Framework\Contracts\ApplicationInterface;
 use Ivi\Framework\Contracts\ServiceProviderInterface;
@@ -106,9 +106,9 @@ abstract class ServiceProvider implements ServiceProviderInterface
     /**
      * @brief Return the application configuration service.
      *
-     * @return Config
+     * @return ConfigRepository
      */
-    final protected function config(): Config
+    final protected function config(): ConfigRepository
     {
         return $this->application->config();
     }

@@ -21,7 +21,7 @@ declare(strict_types=1);
 namespace Ivi\Framework;
 
 use Closure;
-use Ivi\Config\Config;
+use Ivi\Config\ConfigRepository;
 use Ivi\Console\Command;
 use Ivi\Console\Console;
 use Ivi\Console\ConsoleManager;
@@ -94,7 +94,7 @@ final class FrameworkManager
      *
      * @param string             $basePath
      * @param Container|null     $container
-     * @param Config|null        $config
+     * @param ConfigRepository|null        $config
      * @param string             $environment
      * @param Bootstrapper|null  $bootstrapper
      * @param ConsoleManager|null $consoleManager
@@ -106,7 +106,7 @@ final class FrameworkManager
     public static function create(
         string $basePath,
         ?Container $container = null,
-        ?Config $config = null,
+        ?ConfigRepository $config = null,
         string $environment = 'production',
         ?Bootstrapper $bootstrapper = null,
         ?ConsoleManager $consoleManager = null,
@@ -160,9 +160,9 @@ final class FrameworkManager
     /**
      * @brief Return the application configuration service.
      *
-     * @return Config
+     * @return ConfigRepository
      */
-    public function config(): Config
+    public function config(): ConfigRepository
     {
         return $this->application->config();
     }

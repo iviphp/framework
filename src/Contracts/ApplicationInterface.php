@@ -20,7 +20,7 @@ declare(strict_types=1);
 
 namespace Ivi\Framework\Contracts;
 
-use Ivi\Config\Config;
+use Ivi\Config\ConfigRepository;
 use Ivi\Container\Container;
 
 /**
@@ -89,9 +89,9 @@ interface ApplicationInterface
     /**
      * @brief Return the application configuration service.
      *
-     * @return Config
+     * @return ConfigRepository
      */
-    public function config(): Config;
+    public function config(): ConfigRepository;
 
     /**
      * @brief Resolve a service from the application container.

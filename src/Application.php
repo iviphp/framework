@@ -20,7 +20,7 @@ declare(strict_types=1);
 
 namespace Ivi\Framework;
 
-use Ivi\Config\Config;
+use Ivi\Config\ConfigRepository;
 use Ivi\Container\Container;
 use Ivi\Framework\Bootstrap\Bootstrapper;
 use Ivi\Framework\Contracts\ApplicationInterface;
@@ -58,7 +58,7 @@ final class Application implements ApplicationInterface
     /**
      * Application configuration service.
      */
-    private Config $config;
+    private ConfigRepository $config;
 
     /**
      * Application bootstrap coordinator.
@@ -92,14 +92,14 @@ final class Application implements ApplicationInterface
     /**
      * @param string            $basePath
      * @param Container|null    $container
-     * @param Config|null       $config
+     * @param ConfigRepository|null       $config
      * @param string            $environment
      * @param Bootstrapper|null $bootstrapper
      */
     public function __construct(
         string $basePath,
         ?Container $container = null,
-        ?Config $config = null,
+        ?ConfigRepository $config = null,
         string $environment = 'production',
         ?Bootstrapper $bootstrapper = null
     ) {
@@ -115,7 +115,7 @@ final class Application implements ApplicationInterface
             ?? new Container();
 
         $this->config = $config
-            ?? new Config();
+            ?? new ConfigRepository();
 
         $this->bootstrapper = $bootstrapper
             ?? new Bootstrapper();
@@ -289,9 +289,9 @@ final class Application implements ApplicationInterface
     /**
      * @brief Return the application configuration service.
      *
-     * @return Config
+     * @return ConfigRepository
      */
-    public function config(): Config
+    public function config(): ConfigRepository
     {
         return $this->config;
     }
@@ -702,7 +702,7 @@ final class Application implements ApplicationInterface
         );
 
         $this->container->instance(
-            Config::class,
+            ConfigRepository::class,
             $this->config
         );
 
