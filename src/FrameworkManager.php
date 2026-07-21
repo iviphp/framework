@@ -668,27 +668,34 @@ final class FrameworkManager
         $container = $this->application
             ->container();
 
-        $services = [
-            'framework' => $this,
-            FrameworkManager::class => $this,
-            'console' => $this->console,
-            Console::class => $this->console,
-            'console.manager' => $this->consoleManager,
-            ConsoleManager::class => $this->consoleManager,
-        ];
+        $container->instance(
+            'framework',
+            $this
+        );
 
-        foreach ($services as $id => $service) {
-            if ($container->has($id)) {
-                throw FrameworkException::invalidConfiguration(
-                    'framework_manager',
-                    "The container service {$id} is already registered."
-                );
-            }
+        $container->instance(
+            FrameworkManager::class,
+            $this
+        );
 
-            $container->instance(
-                $id,
-                $service
-            );
-        }
+        $container->instance(
+            'console',
+            $this->console
+        );
+
+        $container->instance(
+            Console::class,
+            $this->console
+        );
+
+        $container->instance(
+            'console.manager',
+            $this->consoleManager
+        );
+
+        $container->instance(
+            ConsoleManager::class,
+            $this->consoleManager
+        );
     }
 }
