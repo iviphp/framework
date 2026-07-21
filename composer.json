@@ -1,0 +1,24 @@
+{
+  "name": "iviphp/framework",
+  "description": "Application bootstrapping, service providers and framework coordination for the IviPHP ecosystem.",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Ivi\\Framework\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "iviphp/config": "^0.1",
+    "iviphp/console": "^0.1",
+    "iviphp/container": "^0.1",
+    "iviphp/contracts": "^0.1",
+    "iviphp/debug": "^0.1",
+    "iviphp/http": "^0.1",
+    "iviphp/support": "^0.1"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
